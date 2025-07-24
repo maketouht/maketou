@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connexion - MaketOu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #a5b4fc 50%, #2563eb 100%);
+            min-height: 100vh;
+            font-family: 'Roboto', Arial, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .glow {
+            box-shadow: 0 0 24px 4px #60a5fa, 0 2px 8px 0 #2563eb33;
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+            color: #fff;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px 0 #2563eb55;
+        }
+        .btn-gradient:hover {
+            transform: scale(1.06) translateY(-2px);
+            box-shadow: 0 4px 24px 0 #2563eb99;
+            background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+        }
+        .section-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            font-size: 2.5rem;
+        }
+        .card-anim {
+            transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
+        }
+        .card-anim:hover {
+            transform: scale(1.045) rotate(-1deg) translateY(-4px);
+            box-shadow: 0 8px 32px 0 #2563eb55, 0 2px 8px 0 #60a5fa33;
+        }
+        .badge-anim {
+            animation: floatBadge 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes floatBadge {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px) scale(1.04); }
+        }
+        .search-premium {
+            box-shadow: 0 2px 16px 0 #2563eb33;
+            background: rgba(255,255,255,0.7);
+            border: 1.5px solid #60a5fa;
+        }
+        .footer-glass {
+            background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+            background-clip: padding-box;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="glass glow sticky top-0 z-30 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-3xl font-extrabold section-title tracking-tight">MaketOu</div>
+            <nav class="space-x-6 hidden md:flex">
+                <a href="index.php" class="text-gray-700 hover:text-blue-600 font-semibold">Accueil</a>
+                <a href="shop.html" class="text-gray-700 hover:text-blue-600 font-semibold">Boutique</a>
+                <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-semibold">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="text-gray-700 hover:text-blue-600 font-semibold">Connexion</a>
+                <a href="panier.html" class="text-gray-700 hover:text-blue-600 font-semibold">Panier (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </header>
+    <!-- BARRE DE RECHERCHE -->
+    <div class="py-6">
+        <div class="max-w-2xl mx-auto flex items-center search-premium rounded-xl overflow-hidden">
+            <input id="search-input" type="text" placeholder="Rechercher un produit, une catégorie..." class="w-full px-4 py-3 border-0 focus:outline-none bg-transparent text-lg" />
+            <button id="search-btn" class="btn-gradient px-6 py-3 rounded-none rounded-r-xl text-lg">Rechercher</button>
+        </div>
+        <div id="search-results" class="max-w-2xl mx-auto bg-white border rounded mt-2 hidden"></div>
+    </div>
+    <section class="max-w-md mx-auto my-12 glass p-8 rounded-2xl shadow-xl card-anim">
+        <h2 class="section-title mb-6 text-center">Connexion à votre compte</h2>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label for="email" class="block mb-1 font-semibold">Adresse e-mail</label>
+                <input type="email" id="email" name="email" required class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block mb-1 font-semibold">Mot de passe</label>
+            <input type="mot_de_passe" id="mot_de_passe" name="mot_de_passe" required class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <button type="submit" class="w-full btn-gradient py-3 rounded-xl font-semibold text-lg">Se connecter</button>
+        </form>
+        <div id="loginMessage" class="mt-4 text-center text-red-600"></div>
+        <div class="mt-6 text-center">
+            <span>Pas encore de compte ?</span>
+            <button id="showRegister" class="text-blue-600 hover:underline ml-1">Créer un compte</button>
+        </div>
+    </section>
+    <section id="registerSection" class="max-w-md mx-auto my-12 glass p-8 rounded-2xl shadow-xl card-anim hidden">
+        <h2 class="section-title mb-6 text-center">Créer un compte</h2>
+        <form id="registerForm">
+            <div class="mb-4">
+                <label for="regNom" class="block mb-1 font-semibold">Nom</label>
+                <input type="text" id="regNom" name="regNom" required class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div class="mb-4">
+                <label for="regEmail" class="block mb-1 font-semibold">Adresse e-mail</label>
+                <input type="email" id="regEmail" name="regEmail" required class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div class="mb-4">
+                <label for="regTelephone" class="block mb-1 font-semibold">Téléphone</label>
+                <input type="tel" id="regTelephone" name="regTelephone" required pattern="[0-9+ ]{8,20}" placeholder="Ex: +509 1234-5678" class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div class="mb-4">
+                <label for="regPassword" class="block mb-1 font-semibold">Mot de passe</label>
+                <input type="password" id="regPassword" name="regPassword" required class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div class="mb-6">
+                <label for="regPassword2" class="block mb-1 font-semibold">Confirmer le mot de passe</label>
+                <input type="password" id="regPassword2" name="regPassword2" required class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <button type="submit" class="w-full btn-gradient py-3 rounded-xl font-semibold text-lg">S'inscrire</button>
+        </form>
+        <div id="registerMessage" class="mt-4 text-center text-red-600"></div>
+        <div class="mt-6 text-center">
+            <button id="showLogin" class="text-blue-600 hover:underline">Déjà un compte ? Se connecter</button>
+        </div>
+    </section>
+    <div class="max-w-2xl mx-auto py-4 text-center">
+        <a href="panier.html" class="text-gray-700 hover:text-blue-600">Panier (<span id="cart-count">0</span>)</a>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer-glass py-12 px-4 mt-12 shadow-2xl">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="font-bold text-lg mb-3">Contact</h4>
+                <ul class="text-sm space-y-2">
+                    <li><span class="font-semibold">Téléphone:</span> +509 1234-5678</li>
+                    <li><span class="font-semibold">Email:</span> contact@maketou.com</li>
+                    <li><span class="font-semibold">Adresse:</span> Port-au-Prince, Haïti</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-3">Navigation</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="index.php" class="hover:underline">Accueil</a></li>
+                    <li><a href="shop.html" class="hover:underline">Boutique</a></li>
+                    <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                    <li><a href="login.html" class="hover:underline">Connexion</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-3">Bonus</h4>
+                <ul class="text-sm space-y-2">
+                    <li>Livraison gratuite</li>
+                    <li>Support 24/7</li>
+                    <li>Garantie remboursement</li>
+                    <li>Offres spéciales chaque semaine</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-3">Suivez-nous</h4>
+                <div class="flex space-x-4 mb-4">
+                    <a href="#" class="hover:text-blue-200" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
+                    <a href="#" class="hover:text-blue-200" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.
+                    <a href="#" class="hover:text-pink-200" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.13 4.602.402 3.635 1.37 2.668 2.337 2.396 3.51 2.338 4.788.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.058 1.277.33 2.45 1.297 3.417.967.967 2.14 1.239 3.417 1.297C8.332 23.987 8.741 24 12 24c3.259 0 3.668-.013 4.948-.072 1.277-.058 2.45-.33 3.417-1.297.967-.967 1.239-2.14 1.297-3.417.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.058-1.277-.33-2.45-1.297-3.417-.967-.967-2.14-1.239-3.417-1.297C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+                </div>
+                <h4 class="font-bold text-lg mb-3">Devise</h4>
+                <div class="flex space-x-2">
+                    <span class="bg-blue-800 px-3 py-1 rounded">USD $</span>
+                    <span class="bg-blue-800 px-3 py-1 rounded">HTG G</span>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-blue-200 mt-8 pt-6 text-center text-sm text-blue-100">
+            © 2025 MaketOu. Tous droits réservés.
+        </div>
+    </footer>
+    <script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('register.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data.trim() === "success") {
+            document.getElementById('registerMessage').textContent = "Inscription réussie. Vous pouvez vous connecter.";
+        } else {
+            document.getElementById('registerMessage').textContent = data;
+        }
+    });
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('login.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data.trim() === "success") {
+            window.location.href = "index.php"; // Redirection vers page d'accueil après connexion
+        } else {
+            document.getElementById('loginMessage').textContent = data;
+        }
+    });
+});
+// Afficher le formulaire d'inscription
+document.getElementById('showRegister').addEventListener('click', function() {
+    document.getElementById('registerSection').classList.remove('hidden');
+    document.querySelector('section:not(#registerSection)').classList.add('hidden');
+});
+
+// Afficher le formulaire de connexion
+document.getElementById('showLogin').addEventListener('click', function() {
+    document.getElementById('registerSection').classList.add('hidden');
+    document.querySelector('section:not(#registerSection)').classList.remove('hidden');
+});
+
+</script>
+
+</body>
+</html>

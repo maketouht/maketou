@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Detail - Ma Boutique en ligne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-2xl font-bold text-blue-600">PressMart</div>
+            <nav class="space-x-6 hidden md:flex">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="shop.html" class="text-gray-700 hover:text-blue-600">Shop</a>
+                <a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-700 hover:text-blue-600">Sign In</a>
+                <a href="panier.html" class="text-gray-700 hover:text-blue-600">Panier (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRODUCT DETAIL -->
+    <section class="max-w-7xl mx-auto py-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <img id="product-image" src="images/i001.jpg" alt="Produit" class="w-full h-auto rounded shadow">
+
+        <div>
+            <h2 id="product-nom" class="text-4xl font-bold mb-4">Nom du produit</h2>
+            <p id="product-prix" class="text-blue-600 text-2xl mb-4">Prix</p>
+            <p id="product-description" class="mb-4">Description du produit</p>
+            <div class="mb-4">
+                <span class="font-semibold">Couleurs :</span>
+                <span id="product-couleurs" class="ml-2 align-middle"></span>
+            </div>
+            <div class="mb-4">
+                <span class="font-semibold">Tailles :</span>
+                <span id="product-tailles" class="ml-2 align-middle"></span>
+            </div>
+            <div class="mb-6">
+                <span class="font-semibold">Qualité :</span>
+                <span id="product-qualite" class="ml-2">-</span>
+            </div>
+            <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Ajouter au Panier</button>
+        </div>
+    </section>
+    <script src="script.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <p>© 2025 PressMart. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

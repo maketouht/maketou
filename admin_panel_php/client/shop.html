@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shop - MaketOu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #f6f7fb;
+            min-height: 100vh;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 16px 0 16px;
+        }
+        .shop-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: #222;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .card-pro {
+            background: #fff;
+            border-radius: 1.2rem;
+            box-shadow: 0 2px 12px 0 #e5e7eb;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card-pro:hover {
+            box-shadow: 0 8px 32px 0 #d1d5db;
+            transform: translateY(-4px) scale(1.03);
+        }
+        .card-pro img {
+            border-radius: 1.2rem 1.2rem 0 0;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 18px 16px 16px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #222;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            color: #666;
+            font-size: 0.97rem;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .badge-promo {
+            background: #f87171;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 0.7em;
+            padding: 2px 10px;
+            margin-right: 8px;
+        }
+        .btn-main {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 0.7em;
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+        .btn-main:hover {
+            background: #1e40af;
+        }
+        @media (max-width: 700px) {
+            .main-container { padding: 16px 4px 0 4px; }
+            .shop-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header-pro">
+        <div class="container-header">
+            <div class="logo-pro">MaketOu</div>
+            <nav class="nav-pro">
+                <a href="index.php" class="nav-link">Accueil</a>
+                <a href="shop.html" class="nav-link active">Boutique</a>
+                <a href="panier.php" class="nav-link">Panier</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link">Connexion</a>
+            </nav>
+            <form class="search-bar" action="#" method="get">
+                <input type="text" name="q" placeholder="Rechercher un produit..." class="search-input" />
+                <button type="submit" class="btn-main">🔍</button>
+            </form>
+        </div>
+    </header>
+    <main class="main-container">
+        <div class="shop-title">Notre Boutique</div>
+        <div class="products-grid">
+            <!-- Exemple de card produit -->
+            <div class="card-pro">
+                <img src="images/b001.jpg" alt="Produit 1">
+                <div class="card-content">
+                    <div class="card-title">Montre connectée</div>
+                    <div class="card-desc">Montre intelligente avec suivi santé, notifications et autonomie longue durée.</div>
+                    <div class="card-bottom">
+                        <span class="badge-promo">-20%</span>
+                        <button class="btn-main">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-pro">
+                <img src="images/b002.jpg" alt="Produit 2">
+                <div class="card-content">
+                    <div class="card-title">Écouteurs Bluetooth</div>
+                    <div class="card-desc">Son HD, réduction de bruit, autonomie 24h, boîtier de recharge compact.</div>
+                    <div class="card-bottom">
+                        <span class="badge-promo">-15%</span>
+                        <button class="btn-main">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-pro">
+                <img src="images/b003.jpg" alt="Produit 3">
+                <div class="card-content">
+                    <div class="card-title">Lampe LED design</div>
+                    <div class="card-desc">Éclairage d’ambiance, 3 modes, tactile, faible consommation.</div>
+                    <div class="card-bottom">
+                        <span class="badge-promo">-10%</span>
+                        <button class="btn-main">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Ajouter d'autres cards produits ici -->
+        </div>
+    </main>
+    <footer class="footer-pro">
+        <!--#include file="footer.html" -->
+        <!-- Ou bien, si PHP: <?php include 'footer.html'; ?> -->
+    </footer>
+</body>
+</html>
